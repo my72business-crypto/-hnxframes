@@ -568,24 +568,36 @@
         </div>
 
         <div class="contact-form-wrap reveal reveal-delay-2">
+          <!-- Formspree success message -->
+          <div data-fs-success class="fs-success-msg" style="display:none;text-align:center;padding:48px 0">
+            <div style="font-size:36px;margin-bottom:16px;color:var(--gold)">✦</div>
+            <h3 style="font-family:'Cormorant Garamond',serif;font-size:26px;color:#fafafa;margin-bottom:10px">Message Sent</h3>
+            <p style="font-size:13px;color:rgba(250,250,250,0.4);letter-spacing:.1em">I'll be in touch within 24 hours.</p>
+            <p style="margin-top:12px;font-size:12px;color:rgba(250,250,250,0.25)">Or reach me on WhatsApp: +971 54 273 3164</p>
+          </div>
+          <!-- Formspree form-level error -->
+          <div data-fs-error class="fs-error-msg"></div>
+
           <form class="contact-form" id="contact-form" novalidate>
             <div class="form-row">
               <div class="form-group">
                 <label for="name">Your Name</label>
-                <input type="text" id="name" name="name" placeholder="Ahmed Al Rashid" required />
+                <input type="text" id="name" name="name" placeholder="Ahmed Al Rashid" data-fs-field required />
+                <span data-fs-error="name" class="field-error"></span>
               </div>
               <div class="form-group">
                 <label for="company">Company / Brand</label>
-                <input type="text" id="company" name="company" placeholder="AutoLux Dubai" />
+                <input type="text" id="company" name="company" placeholder="AutoLux Dubai" data-fs-field />
               </div>
             </div>
             <div class="form-group">
               <label for="email">Email Address</label>
-              <input type="email" id="email" name="email" placeholder="ahmed@example.com" required />
+              <input type="email" id="email" name="email" placeholder="ahmed@example.com" data-fs-field required />
+              <span data-fs-error="email" class="field-error"></span>
             </div>
             <div class="form-group">
               <label for="service">Service Needed</label>
-              <select id="service" name="service">
+              <select id="service" name="service" data-fs-field>
                 <option value="">Select a service…</option>
                 <option>Automotive Photography</option>
                 <option>Automotive Videography</option>
@@ -598,11 +610,11 @@
             </div>
             <div class="form-group">
               <label for="message">Tell Me About Your Project</label>
-              <textarea id="message" name="message" rows="4" placeholder="What vehicles? What's the goal? Timeline?"></textarea>
+              <textarea id="message" name="message" rows="4" placeholder="What vehicles? What's the goal? Timeline?" data-fs-field></textarea>
+              <span data-fs-error="message" class="field-error"></span>
             </div>
-            <button type="submit" class="btn btn-primary btn-full">
-              <span class="btn-text">Send Enquiry</span>
-              <span class="btn-loading" hidden>Sending…</span>
+            <button type="submit" class="btn btn-primary btn-full" data-fs-submit-btn>
+              <span>Send Enquiry</span>
             </button>
             <p class="form-note">I typically respond within 24 hours.</p>
           </form>
@@ -644,5 +656,12 @@
   </footer>
 
   <script src="js/main.js"></script>
+
+  <!-- Formspree Ajax -->
+  <script>
+    window.formspree = window.formspree || function () { (formspree.q = formspree.q || []).push(arguments); };
+    formspree('initForm', { formElement: '#contact-form', formId: 'mlgkleoa' });
+  </script>
+  <script src="https://unpkg.com/@formspree/ajax@1" defer></script>
 </body>
 </html>
