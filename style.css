@@ -1410,3 +1410,37 @@ body:has(button:hover) .cursor-follower { width: 56px; height: 56px; border-colo
 [data-fs-submit-btn]:disabled::after {
   content: '…';
 }
+
+/* ── REEL CARD AS LINK ───────────────────────────────────── */
+a.reel-card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  cursor: none;
+}
+a.reel-card:hover { color: inherit; }
+
+.reel-badge {
+  position: absolute;
+  top: 12px;
+  left: 12px;
+  font-size: 9px;
+  font-weight: 700;
+  letter-spacing: 0.2em;
+  text-transform: uppercase;
+  color: var(--black);
+  background: var(--gold);
+  padding: 5px 10px;
+  border-radius: 2px;
+  z-index: 3;
+  opacity: 0;
+  transform: translateY(-4px);
+  transition: opacity 0.3s, transform 0.3s;
+}
+a.reel-card:hover .reel-badge {
+  opacity: 1;
+  transform: translateY(0);
+}
+/* Ensure reel thumb overlay on hover still works */
+a.reel-card:hover .reel-thumb img { transform: scale(1.05); }
+a.reel-card:hover { border-color: var(--border); transform: translateY(-6px); box-shadow: 0 24px 60px rgba(0,0,0,0.5), 0 0 0 1px rgba(201,168,76,0.06); }
